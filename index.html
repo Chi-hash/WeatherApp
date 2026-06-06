@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script type="module" crossorigin src="/WeatherApp/assets/index-CUEJTrqA.js"></script>
+    <link rel="stylesheet" crossorigin href="/WeatherApp/assets/index-Cntvi40N.css">
+  </head>
+  <body>
+    <main id="Main-body">
+      <section id="container-section">
+        <div class="container">
+          <div class="loading-state">
+            <i class="fas fa-spinner"></i>
+            <p>Loading...</p>
+          </div>
+          <div class="search-container">
+            <div class="top">
+              <p class="weather-title">weather</p>
+              <p class="weather-updated">
+                <i class="fa-solid fa-clock"></i> Updated Just now
+              </p>
+            </div>
+            <div class="bottom">
+              <div class="input-box">
+                <i class="fa-solid fa-search"></i>
+                <input
+                  type="text"
+                  class="search-input"
+                  placeholder="Search for a city..."
+                  id="search"
+                />
+              </div>
+              <!-- dropdown -->
+              <div class="search-results"></div>
+
+              <div class="search-button">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- <hr /> -->
+
+          <div class="weather-information">
+            <div class="weather-state">
+              <i class="fa-regular fa-sun"></i>
+            </div>
+            <div class="weather-info">
+              <p class="temperature">25°C</p>
+              <p class="description">Sunny</p>
+              <p class="location">
+                <i class="fa-solid fa-location-dot"></i> New York, US
+              </p>
+            </div>
+            <div class="weather-stats">
+              <div class="humidity tab">
+                <i class="fa-solid fa-tint"></i>
+                <p>Humidity</p>
+                <span>60%</span>
+              </div>
+              <div class="wind-speed tab">
+                <i class="fa-solid fa-wind"></i>
+                <p>Wind Speed</p>
+                <span>10 km/h</span>
+              </div>
+
+              <div class="feels-like tab">
+                <i class="fa-solid fa-temperature-high"></i>
+                <p>Feels Like</p>
+                <span>27°</span>
+              </div>
+
+              <div class="visibility tab">
+                <i class="fa-solid fa-eye"></i>
+                <p>Visibility</p>
+                <span>10 km</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- <hr /> -->
+
+          <div class="day-forecast">
+            <div class="top">
+              <p class="forecast-title">5-day Forecast</p>
+            </div>
+            <div class="bottom">
+              <div class="forecast-item">
+                <p class="forecast-day today active">Today</p>
+                <i class="fa-regular fa-sun"></i>
+                <p class="forecast-temperature today">25°C</p>
+              </div>
+              <div class="forecast-item">
+                <p class="forecast-day">Tue</p>
+                <i class="fa-solid fa-cloud-sun"></i>
+                <p class="forecast-temperature">22°C</p>
+              </div>
+              <div class="forecast-item">
+                <p class="forecast-day">Weds</p>
+                <i class="fa-solid fa-cloud"></i>
+                <p class="forecast-temperature">24°C</p>
+              </div>
+              <div class="forecast-item">
+                <p class="forecast-day">Thur</p>
+                <i class="fa-solid fa-cloud-showers-water"></i>
+                <p class="forecast-temperature">20°C</p>
+              </div>
+              <div class="forecast-item">
+                <p class="forecast-day">Fri</p>
+                <i class="fa-regular fa-sun"></i>
+                <p class="forecast-temperature">26°C</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
