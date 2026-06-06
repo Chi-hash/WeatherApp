@@ -66,8 +66,9 @@ function fetchWeather() {
         .then(data => {
             console.log(data);
             updateUI(data);
+            fetchForecast();
             document.querySelector('.loading-state').style.display = 'none';
-            document.querySelector('.container').style.filter = 'none';
+            document.querySelector('.container').style.filter = 'blur(0)';
         })
 }
 
@@ -130,11 +131,19 @@ function search() {
     const searchInput = document.querySelector('.search-input');
     const city = searchInput.value.trim();
     if (city) {
+
+        
+    document.querySelector('.container').style.filter = 'blur(5px)';
+        document.querySelector('.loading-state').style.display = 'block';
+        
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 updateUI(data);
+                fetchForecast();
+                  document.querySelector('.loading-state').style.display = 'none';
+            document.querySelector('.container').style.filter = 'blur(0)';
             })
             .catch(error => {
                 console.error(error);
@@ -152,3 +161,90 @@ searchInput.addEventListener('keypress', function (event) {
         search();
     }
 });
+
+
+
+// dropdown logic
+const searchInputElement = document.querySelector('.search-input');
+const searchResultsDiv = document.querySelector('.search-results');
+
+// Listen for input changes
+searchInputElement.addEventListener('input', async function() {
+  const city = searchInputElement.value.trim();
+  
+  // Hide dropdown if input is empty or too short
+  if (city.length < 2) {
+    searchResultsDiv.style.display = 'none';
+    searchResultsDiv.innerHTML = '';
+    return;
+  }
+  
+  try {
+    // Call geocoding API
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`);
+    const cities = await response.json();
+    
+    // Clear old results
+    searchResultsDiv.innerHTML = '';
+    
+    // Loop through results and create dropdown items
+    cities.forEach(cityData => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'result-item';
+      resultItem.textContent = `${cityData.name}, ${cityData.country}`;
+      
+      // Add click listener to each result
+      resultItem.addEventListener('click', function() {
+        searchInputElement.value = cityData.name;
+        search();
+        searchResultsDiv.style.display = 'none';
+      });
+      
+      searchResultsDiv.appendChild(resultItem);
+    });
+    
+    // Show the dropdown
+    searchResultsDiv.style.display = 'block';
+  } catch (error) {
+    console.error('Error fetching cities:', error);
+  }
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener('click', function(event) {
+  if (!event.target.closest('.search-container')) {
+    searchResultsDiv.style.display = 'none';
+  }
+});
+
+
+
+// 5 day forcast
+function fetchForecast() {
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      updateForecast(data.list);
+    })
+    .catch(error => console.error('Error fetching forecast:', error));
+}
+
+//updat forecast ui
+function updateForecast(forecastList) {
+  const forecastItems = document.querySelectorAll('.forecast-item');
+  
+  // Get one forecast per day (every 8 items = 24 hours)
+  for (let i = 0; i < 5; i++) {
+    const forecast = forecastList[i * 8]; // Get data at index 0, 8, 16, 24, 32
+    
+    const day = new Date(forecast.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+    const temp = Math.round(forecast.main.temp);
+    const condition = forecast.weather[0].main.toLowerCase();
+    const weatherData = weatherMap[condition] || weatherMap['mist'];
+    
+    // Update the forecast item
+    forecastItems[i].querySelector('.forecast-day').textContent = day;
+    forecastItems[i].querySelector('.forecast-temperature').textContent = `${temp}°C`;
+    forecastItems[i].querySelector('i').className = weatherData.icon;
+  }
+}

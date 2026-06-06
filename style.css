@@ -34,6 +34,7 @@ section .container {
 
 /* the weather title and seach container styles */
 section .container .search-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,4 +275,37 @@ section .container .loading-state {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* dropdown */
+section .container .search-container .bottom .search-results {
+  display: none;
+  position: absolute;
+  top: 130px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.568);
+  border-radius: 20px;
+  border: 1px solid white;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  margin-top: 5px;
+}
+
+.search-results .result-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  color: #7c3a00;
+  font-size: 14px;
+}
+
+.search-results .result-item:hover {
+  background-color: #a7a7a7;
+}
+
+.search-results .result-item:last-child {
+  border-bottom: none;
 }
