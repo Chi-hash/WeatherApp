@@ -4,14 +4,14 @@ A modern, responsive weather application that displays real-time weather data wi
 
 ## Features
 
-- **Real-time Weather Data** — Get current weather conditions for any location
-- **Geolocation Support** — Automatically detect and fetch weather for your current location
-- **City Search** — Search for weather by city name with autocomplete suggestions
-- **Dynamic UI** — Background gradient and weather icons change based on current weather conditions
-- **Detailed Weather Info** — Display temperature, humidity, wind speed, feels-like temperature, and visibility
-- **5-Day Forecast** — View weather forecast for the next 5 days
-- **Loading State** — Visual feedback with spinner while fetching data
-- **Responsive Design** — Works seamlessly on desktop and mobile devices
+- **Real-time Weather Data** - Get current weather conditions for any location
+- **Geolocation Support** - Automatically detect and fetch weather for your current location
+- **City Search** - Search for weather by city name with autocomplete suggestions
+- **Dynamic UI** - Background gradient and weather icons change based on current weather conditions
+- **Detailed Weather Info** - Display temperature, humidity, wind speed, feels-like temperature, and visibility
+- **5-Day Forecast** - View weather forecast for the next 5 days
+- **Loading State** - Visual feedback with spinner while fetching data
+- **Responsive Design** - Works seamlessly on desktop and mobile devices
 
 ## Tech Stack
 
@@ -71,12 +71,12 @@ Open your browser and navigate to `http://localhost:5173`
 
 ### View Weather Details
 
-- **Temperature** — Current temperature in Celsius
-- **Description** — Weather condition (Sunny, Cloudy, Rainy, etc.)
-- **Humidity** — Current humidity percentage
-- **Wind Speed** — Wind speed in m/s
-- **Feels Like** — What the temperature feels like
-- **Visibility** — Current visibility in km
+- **Temperature** - Current temperature in Celsius
+- **Description** - Weather condition (Sunny, Cloudy, Rainy, etc.)
+- **Humidity** - Current humidity percentage
+- **Wind Speed** - Wind speed in m/s
+- **Feels Like** - What the temperature feels like
+- **Visibility** - Current visibility in km
 
 ## Environment Variables
 
@@ -110,11 +110,11 @@ This app uses the [OpenWeatherMap API](https://openweathermap.org/api):
 
 The app features a beautiful glassmorphism design with dynamic gradients based on weather:
 
-- **Clear** — Orange to Yellow gradient
-- **Cloudy** — Gray gradient
-- **Rainy** — Blue gradient
-- **Snowy** — Cyan gradient
-- **Thunderstorm** — Purple gradient
+- **Clear** - Orange to Yellow gradient
+- **Cloudy** - Gray gradient
+- **Rainy** - Blue gradient
+- **Snowy** - Cyan gradient
+- **Thunderstorm** - Purple gradient
 
 ## Browser Compatibility
 
